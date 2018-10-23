@@ -80,7 +80,7 @@ img {
 /**Custom css for class img-slider (Carousel of news content in index)*/
 .img-slider{
   width: 1100px;
-  height: 450px;
+  height: 500px;
 }
 
 .img-content-instansi{
@@ -91,6 +91,11 @@ img {
 .img-content-kota{
   width: 90px;
   height: 90px;
+}
+
+.img-news-list{
+  width: 730px;
+  height: 350px;
 }
 
 .slider-title{

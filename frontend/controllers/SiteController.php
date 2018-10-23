@@ -84,23 +84,24 @@ class SiteController extends Controller
             ->all();
         //SELECT * FROM `v_berita_instansi` WHERE instansi_id='G09018' AND instansi_berita='ON' ORDER by tanggal_berita DESC
 
+
         $berita_instansi = VBeritaInstansi::find()
             ->where([
-                    'instansi_id' => 'G09018',
-                    'instansi_berita' => 'ON'
-                ])
+                'instansi_id' => 'G09018',
+                'instansi_berita' => 'ON'])
             ->orderBy('tanggal_berita DESC')
+            ->limit(6)
             ->all();
 
-        $berita_utama_instansi = VBeritaInstansi::find()
+        /*$berita_utama_instansi = VBeritaInstansi::find()
             ->where([
                     'instansi_id' => 'G09018',
                     'instansi_berita' => 'ON',
                     'utama_instansi_berita' => 'ON'
                 ])
             ->orderBy('tanggal_berita DESC')
-            ->all();
-
+            ->all();*/
+        
         $slideractive = VBeritaInstansi::find()
              ->where([
                     'instansi_id' => 'G09018',
@@ -122,26 +123,31 @@ class SiteController extends Controller
             ->offset(1)
             ->all();
 
-        /*$berita = new ActiveDataProvider ([
-            'query' => VBeritaInstansi::find()
-                ->where(['instansi_id' => 'G09018', 'instansi_berita' => 'ON'])
-                ->orderBy('tanggal_berita DESC'),
-            'pagination' => ['pagesize' => 1,]
-        ]);*/
-
         return $this->render('index', [
             'berita_instansi_limit' => $berita_instansi_limit,
             'berita_instansi'       => $berita_instansi,
-            'berita_utama_instansi' => $berita_utama_instansi,
             'slideractive'          => $slideractive,
-            'slideritem'            => $slideritem,
-            /*'berita' => $berita*/
+            'slideritem'            => $slideritem
         ]);
     }
 
-    public function actionDetailBerita($id)
+    public function actionDaftar()
     {
-        return $this->render('detail_berita', ['detail' => $this->findModel($id),]);
+        $query = VBeritaInstansi::find()
+            ->where([
+                'instansi_id' => 'G09018',
+                'instansi_berita' => 'ON'])
+            ->orderBy('tanggal_berita DESC');
+        $countQuery = $query->count();
+        $pages = new Pagination(['pageSize' => 1 , 'totalCount' => $countQuery]);
+        $daftar_berita_instansi = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('daftar', [
+            'daftar_berita_instansi' => $daftar_berita_instansi,
+            'pages'                  => $pages,
+        ]);
     }
 
     public function actionFooter()

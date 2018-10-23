@@ -23,7 +23,7 @@ $this->title = $berita->judul_berita
                                 <?php if($berita->gambar_berita != null) { ?>
                                     <?= Html::img('@web/upload/berita/'.$berita->gambar_berita.'', ['alt' => ''.$berita->gambar_berita.'']); ?>
                                 <?php } else { ?>
-                                    <?= Html::img('@web/upload/No_Image_Available.jpg', ['width' => '800', 'height' => '100',]); ?>
+                                    <?= Html::img('@web/upload/No_Image_Available.jpg'); ?>
                                 <?php } ?>
                             </a>
 

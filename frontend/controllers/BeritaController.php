@@ -22,7 +22,7 @@ class BeritaController extends Controller
 
     public function actionIndex($id)
     {
-        $berita = VBeritaInstansi::findOne($id);
+        $berita = VBeritaInstansi::find()->where(['slug_berita' => $id])->one();
 
         return $this->render('index', ['berita' => $berita]);
     }

@@ -41,6 +41,10 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/' => 'site/index',
+                'login' => 'site/login',
+                'view/<id:\d+>' => 'site/view',
+                'berita-instansi' => 'site/daftar',
             ],
         ],
     ],
