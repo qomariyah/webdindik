@@ -43,8 +43,16 @@ return [
             'rules' => [
                 '/' => 'site/index',
                 'login' => 'site/login',
-                'view/<id:\d+>' => 'site/view',
                 'berita-instansi' => 'site/daftar',
+                [
+                    'pattern' => 'berita/<id>',
+                    'route'   => 'site/view',
+                    'suffix'  => '.html',
+                ],
+
+                // '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                // '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                // '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],
         ],
     ],

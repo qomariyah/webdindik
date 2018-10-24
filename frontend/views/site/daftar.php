@@ -20,7 +20,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                             <!-- Single Featured Post -->
                             <div class="single-blog-post featured-post mb-30">
                                 <div class="post-thumb">
-                                    <a href="<?= Url::to(['/berita', 'id'=>$bi->id_berita])?>">
+                                    <a href="<?= Url::to(['/site/view', 'id'=>$bi->slug_berita])?>">
                                         <?php if($bi->gambar_berita != null) { ?>
                                             <?= Html::img('@web/upload/berita/'.$bi->gambar_berita.'', ['class' => 'img-news-list'] , ['alt' => ''.$bi->gambar_berita.'']) ?>
                                         <?php } else { ?>
@@ -29,7 +29,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                                     </a>
                                 </div>
                                 <div class="post-data">
-                                    <a href="<?= Url::to(['/berita', 'id'=>$bi->id_berita])?>" class="post-title">
+                                    <a href="<?= Url::to(['/site/view', 'id'=>$bi->slug_berita])?>" class="post-title">
                                         <h6><?= $bi->judul_berita ?></h6>
                                     </a>
                                     <div class="post-meta">

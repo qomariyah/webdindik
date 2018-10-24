@@ -1,6 +1,6 @@
 <?php 
-
- ?>
+use yii\helpers\Url;
+?>
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
 
@@ -14,11 +14,11 @@
                         <div class="footer-widget-area mt-80">
                             <!-- Footer Logo -->
                             <div class="footer-logo">
-                                <a href="index.html"><img src="img/pkl.png" alt=""></a>
+                                <a href="index.html"><img src="<?= Url::to(['img/pkl.png'])?>" alt=""></a>
                             </div>
                             <!-- List -->
                             <ul class="list">
-                                <li><a href="#">Dinas Pendidikan Kota Pekalongan</a></li>
+                                <li><a href="#"><?= Yii::$app->name; ?></a></li>
                                 <li><a href="https://goo.gl/maps/yZANiTiQP8L2" target="_blank">Jl. Maninjau No. 16 Kota Pekalongan</a></li>
                                 <li><p>Telp/Fax : (0285) 421878</p></li>
                                 <!-- <li><a href="">www.yoursitename.com</a></li> -->

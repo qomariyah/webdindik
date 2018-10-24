@@ -20,7 +20,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                         <div id="breakingNewsTicker" class="ticker">
                             <ul>
                                 <?php foreach($berita_instansi_limit as $row) { ?>
-                                    <li><a href="<?= Url::to(['/berita', 'id'=>$row->id_berita])?>"><?= $row->judul_berita ?></a></li>
+                                    <li><a href="<?= Url::to(['/site/view', 'id'=>$row->slug_berita])?>"><?= $row->judul_berita ?></a></li>
                                 <?php } ?>
                             </ul>
                         </div>
@@ -42,7 +42,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                         <?php } else { ?>
                             <?= Html::img('@web/upload/No_Image_Available.jpg', ['class' => 'img-slider'], ['alt' => 'No Image Available']); ?>
                         <?php } ?>
-                        <a href="<?= Url::to(['/berita', 'id'=>$row->id_berita])?>">
+                        <a href="<?= Url::to(['/site/view', 'id'=>$row->slug_berita])?>">
                             <div class="carousel-caption d-none d-md-block bg-text">
                                 <h4 class="slider-title"><?= $row->judul_berita ?></h4>
                             </div>
@@ -56,7 +56,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                         <?php } else { ?>
                             <?= Html::img('@web/upload/No_Image_Available.jpg', ['class' => 'img-slider'], ['alt' => 'No Image Available']); ?>
                         <?php } ?>
-                        <a href="<?= Url::to(['/berita', 'id'=>$row->id_berita])?>">
+                        <a href="<?= Url::to(['/site/view', 'id'=>$row->slug_berita])?>">
                             <div class="carousel-caption d-none d-md-block bg-text">
                                 <h4 class="slider-title"><?= $row->judul_berita ?></h4>
                             </div>
@@ -92,7 +92,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                         <div class="col-12 col-md-6">
                             <div class="single-blog-post style-3">
                                 <div class="post-thumb">
-                                    <a href="<?= Url::to(['/berita', 'id'=>$row->slug_berita])?>">
+                                    <a href="<?= Url::to(['/site/view', 'id'=>$row->slug_berita])?>">
                                         <?php if($row->gambar_berita != null) { ?>
                                             <?= Html::img('@web/upload/berita/'.$row->gambar_berita.'', ['class' => 'img-content-instansi'] , ['alt' => ''.$row->gambar_berita.'']) ?>
                                         <?php } else { ?>
@@ -101,7 +101,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                                     </a>
                                 </div>
                                 <div class="post-data">
-                                    <a href="<?= Url::to(['/berita', 'id'=>$row->slug_berita])?>" class="post-title">
+                                    <a href="<?= Url::to(['/site/view', 'id'=>$row->slug_berita])?>" class="post-title">
                                         <h6><?= $row->judul_berita ?></h6>
                                     </a>
                                     <!-- <div class="post-meta d-flex align-items-center">
