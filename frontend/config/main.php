@@ -49,7 +49,11 @@ return [
                     'route'   => 'site/view',
                     'suffix'  => '.html',
                 ],
-
+                [
+                    'pattern' => 'album/<id>',
+                    'route'   => 'site/viewfoto',
+                    'suffix'  => '.html',
+                ],
                 // '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 // '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 // '<controller:\w+>/<action:\w+>' => '<controller>/<action>',

@@ -279,7 +279,7 @@ textarea:focus {
 
 /* ScrollUp */
 #scrollUp {
-  background-color: #535353;
+  background-color: #4179c0;
   border-radius: 0;
   bottom: 60px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
@@ -1040,25 +1040,27 @@ textarea:focus {
   .single-video-post img {
     -webkit-transition-duration: 2000ms;
     transition-duration: 2000ms;
-    width: 100%; }
+    width: 100%;
+    height: 250px; }
   .single-video-post .videobtn {
     position: absolute;
     width: auto;
     height: auto;
-    top: 50%;
+    top: 75%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
     .single-video-post .videobtn a {
       display: block;
-      width: 70px;
-      height: 40px;
+      width: auto;
+      height: auto;
       border-radius: 5px;
       background-color: #4179C0;
       color: #fff;
       text-align: center;
-      line-height: 40px;
-      font-size: 18px; }
+      font-size: 14px;
+      padding: 10px;
+      opacity: 0.9; }
       .single-video-post .videobtn a:hover, .single-video-post .videobtn a:focus {
         background-color: #152535;
         color: #fff; }

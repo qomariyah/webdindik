@@ -7,7 +7,7 @@ use yii\grid\GridView;
 $this->title = 'Dinas Pendidikan Kota Pekalongan';
 ?>
 
-<!-- ##### Hero Area Start ##### -->
+<!-- ##### BERITA TERBARU/BREAKING NEWS Start ##### -->
     <div class="hero-area">
         <div class="container">
             <div class="row align-items-center">
@@ -29,9 +29,9 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
             </div>
         </div>
     </div>
-    <!-- ##### Hero Area End ##### -->
+    <!-- ##### BERITA TERBARU/BREAKING NEWS End ##### -->
 
-    <!-- Carousel -->
+    <!-- ##### CAROUSEL AREA START ##### -->
    <div class="container" style="margin-bottom: 30px">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -74,10 +74,10 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
             </a>
         </div>
     </div>
-    <!-- End of Carousel-->
+    <!-- ##### CAROUSEL AREA END #####-->
  
 
-    <!-- ##### Popular News Area Start ##### -->
+    <!-- ##### BERITA INSTANSI AREA START ##### -->
     <div class="popular-news-area section-padding-80-50">
         <div class="container">
             <div class="row">
@@ -104,10 +104,6 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                                     <a href="<?= Url::to(['/site/view', 'id'=>$row->slug_berita])?>" class="post-title">
                                         <h6><?= $row->judul_berita ?></h6>
                                     </a>
-                                    <!-- <div class="post-meta d-flex align-items-center">
-                                        <a href="#" class="post-like"><img src="img/core-img/like.png" alt=""> <span>392</span></a>
-                                        <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt=""> <span>10</span></a>
-                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -145,4 +141,180 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
             </div>
         </div>
     </div>
-<!-- ##### Popular News Area End ##### -->
+<!-- ##### BERITA INSTANSI AREA END ##### -->
+
+<!-- ##### ALBUM FOTO AREA START ##### -->
+<div class="video-post-area bg-img bg-overlay" style="background-image: url(img/bg-img/bg1.jpg);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <?php foreach ($albumfoto as $albumfoto) { ?>
+                <!-- Single Video Post -->
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="single-video-post">
+                        <?php if($albumfoto->gambar_album != null) { ?>
+                            <?= Html::img('@web/upload/album/foto/'.$albumfoto->gambar_album.'', ['alt' => ''.$albumfoto->gambar_album.'']); ?>
+                        <?php } else { ?>
+                            <?= Html::img('@web/upload/No_Image_Available.jpg', ['alt' => 'No Image Available']); ?>
+                        <?php } ?>
+                        <!-- Video Button -->
+                        <div class="videobtn">
+                            <a href="<?= Url::to(['/site/viewfoto', 'id'=>$albumfoto->slug_album])?>"><?= $albumfoto->nama_album ?> <br><hr> <?= date('d F Y', strtotime($albumfoto->tanggal_album)) ?></a>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+        <div class="row justify-content-center">
+            
+        </div>
+    </div>
+</div>
+<!-- ##### ALBUM FOTO AREA END ##### -->
+
+<!-- ##### Team Area Start ##### -->
+<section class="newspaper-team mb-30">
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="section-heading">
+            <h6>Pengumuman</h6>
+        </div>
+        <div class="row">
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-member">
+                    <img src="img/bg-img/t1.jpg" alt="">
+                    <div class="team-info">
+                        <h5>James Williams</h5>
+                        <h6>Senior Editor</h6>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Team Member -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-member">
+                    <img src="img/bg-img/t2.jpg" alt="">
+                    <div class="team-info">
+                        <h5>Christinne Smith</h5>
+                        <h6>Senior Editor</h6>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Team Member -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-member">
+                    <img src="img/bg-img/t3.jpg" alt="">
+                    <div class="team-info">
+                        <h5>Alicia Dormund</h5>
+                        <h6>Senior Editor</h6>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Team Member -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-member">
+                    <img src="img/bg-img/t4.jpg" alt="">
+                    <div class="team-info">
+                        <h5>Steve Duncan</h5>
+                        <h6>Senior Editor</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Team Area End ##### -->
+
+<!-- ##### TWITTER WIDGET AREA START ##### -->
+<div class="editors-pick-post-area section-padding-80-50">
+    <div class="container">
+        <div class="row">
+            <!-- Editors Pick -->
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-4 col-lg-4">
+                        <div class="single-team-member">
+                            <a class="twitter-timeline" data-lang="id" data-height="500" href="https://twitter.com/pkl_diskominfo?ref_src=twsrc%5Etfw">Tweets by pkl_diskominfo</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+                        </div>
+                    </div>
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-4 col-lg-4">
+                        <div class="single-team-member">
+                            <a class="twitter-timeline" data-lang="id" data-height="500" data-theme="light" href="https://twitter.com/pemkotpkl?ref_src=twsrc%5Etfw">Tweets by pemkotpkl</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+                        </div>
+                    </div>
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-4 col-lg-4">
+                        <div class="single-team-member">
+                            <a class="twitter-timeline" data-lang="id" data-height="500" href="https://twitter.com/HumasPemkotPkl?ref_src=twsrc%5Etfw">Tweets by HumasPemkotPkl</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### TWITTER WIDGET AREA END ##### -->
+
+<!-- ##### Team Area Start ##### -->
+<section class="newspaper-team mb-30">
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="section-heading">
+            <h6>Pengumuman</h6>
+        </div>
+        <div class="row">
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member">
+                            <img src="img/bg-img/t1.jpg" alt="">
+                            <div class="team-info">
+                                <h5>James Williams</h5>
+                                <h6>Senior Editor</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member">
+                            <img src="img/bg-img/t2.jpg" alt="">
+                            <div class="team-info">
+                                <h5>Christinne Smith</h5>
+                                <h6>Senior Editor</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member">
+                            <img src="img/bg-img/t3.jpg" alt="">
+                            <div class="team-info">
+                                <h5>Alicia Dormund</h5>
+                                <h6>Senior Editor</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member">
+                            <img src="img/bg-img/t4.jpg" alt="">
+                            <div class="team-info">
+                                <h5>Steve Duncan</h5>
+                                <h6>Senior Editor</h6>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Team Area End ##### -->
