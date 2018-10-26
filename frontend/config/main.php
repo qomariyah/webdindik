@@ -44,14 +44,21 @@ return [
                 '/' => 'site/index',
                 'login' => 'site/login',
                 'berita-instansi' => 'site/daftar',
+                'album-foto' => 'albumfoto/index',
+                'album-video' => 'albumvideo/index',
                 [
                     'pattern' => 'berita/<id>',
                     'route'   => 'site/view',
                     'suffix'  => '.html',
                 ],
                 [
-                    'pattern' => 'album/<id>',
-                    'route'   => 'site/viewfoto',
+                    'pattern' => 'album-foto/<id>',
+                    'route'   => 'albumfoto/view',
+                    'suffix'  => '.html',
+                ],
+                [
+                    'pattern' => 'album-video/<id>',
+                    'route'   => 'albumvideo/view',
                     'suffix'  => '.html',
                 ],
                 // '<controller:\w+>/<id:\d+>' => '<controller>/view',

@@ -113,7 +113,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
 
                     <div class="pager d-flex align-items-center justify-content-between">
                         <div class="next">
-                            <a href="<?= Url::to(['/berita-instansi'])?>">Lihat Semua <i class="fa fa-angle-right"></i></a>
+                            <a href="<?= Url::to(['/berita-instansi'])?>" class="active">Lihat Semua <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -158,76 +158,43 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                         <?php } ?>
                         <!-- Video Button -->
                         <div class="videobtn">
-                            <a href="<?= Url::to(['/site/viewfoto', 'id'=>$albumfoto->slug_album])?>"><?= $albumfoto->nama_album ?> <br><hr> <?= date('d F Y', strtotime($albumfoto->tanggal_album)) ?></a>
+                            <a href="<?= Url::to(['/albumfoto/view', 'id'=>$albumfoto->slug_album])?>"><?= $albumfoto->nama_album ?> <br><hr> <?= date('d F Y', strtotime($albumfoto->tanggal_album)) ?></a>
                         </div>
                     </div>
                 </div>
             <?php } ?>
         </div>
+        <div class="pull-right">
+            <a href="<?= Url::to(['/album-foto'])?>" class="btn-next">Lihat Semua <i class="fa fa-angle-right"></i></a>
+        </div>        
+    </div>
+    <br>
+    <br>
+    <div class="container">
         <div class="row justify-content-center">
-            
+            <?php foreach($albumvideo as $albumvideo) { ?>
+                <!-- Single Video Post -->
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="single-video-post">
+                        <?php if($albumvideo->gambar_album != null) { ?>
+                            <?= Html::img('@web/upload/album/video/'.$albumvideo->gambar_album.'', ['alt' => ''.$albumvideo->gambar_album.'']); ?>
+                        <?php } else { ?>
+                            <?= Html::img('@web/upload/No_Image_Available.jpg', ['alt' => 'No Image Available']); ?>
+                        <?php } ?>
+                        <!-- Video Button -->
+                        <div class="videobtn">
+                            <a href="<?= Url::to(['/albumvideo/view', 'id'=>$albumvideo->slug_album])?>"><?= $albumvideo->nama_album ?> <br><hr> <?= date('d F Y', strtotime($albumvideo->tanggal_album)) ?></a>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+        <div class="pull-right">
+            <a href="<?= Url::to(['/album-video'])?>" class="btn-next">Lihat Semua <i class="fa fa-angle-right"></i></a>
         </div>
     </div>
 </div>
 <!-- ##### ALBUM FOTO AREA END ##### -->
-
-<!-- ##### Team Area Start ##### -->
-<section class="newspaper-team mb-30">
-    <br>
-    <br>
-    <br>
-    <div class="container">
-        <div class="section-heading">
-            <h6>Pengumuman</h6>
-        </div>
-        <div class="row">
-
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-team-member">
-                    <img src="img/bg-img/t1.jpg" alt="">
-                    <div class="team-info">
-                        <h5>James Williams</h5>
-                        <h6>Senior Editor</h6>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Team Member -->
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-team-member">
-                    <img src="img/bg-img/t2.jpg" alt="">
-                    <div class="team-info">
-                        <h5>Christinne Smith</h5>
-                        <h6>Senior Editor</h6>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Team Member -->
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-team-member">
-                    <img src="img/bg-img/t3.jpg" alt="">
-                    <div class="team-info">
-                        <h5>Alicia Dormund</h5>
-                        <h6>Senior Editor</h6>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Team Member -->
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-team-member">
-                    <img src="img/bg-img/t4.jpg" alt="">
-                    <div class="team-info">
-                        <h5>Steve Duncan</h5>
-                        <h6>Senior Editor</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ##### Team Area End ##### -->
 
 <!-- ##### TWITTER WIDGET AREA START ##### -->
 <div class="editors-pick-post-area section-padding-80-50">

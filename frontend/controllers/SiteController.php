@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\controllers;
 
 use Yii;
@@ -12,6 +13,7 @@ use frontend\models\VBeritaInstansi;
 use frontend\models\VBeritaKota;
 use frontend\models\VWebsite;
 use frontend\models\VAlbumFoto;
+use frontend\models\VAlbumVideo;
 use frontend\models\VLinkTerkait;
 use yii\data\Pagination;
 
@@ -20,7 +22,6 @@ use yii\data\Pagination;
  */
 class SiteController extends Controller
 {
-    public static $id_instansi = 'G09018';
 
     /**
      * {@inheritdoc}
@@ -131,7 +132,21 @@ class SiteController extends Controller
             ->where([
                     'id_instansi' => 'G09018',
                     'status_album' => 'ON',
+                    'jenis_album' => 'FOTO',
                 ])
+            ->orderBy('tanggal_album DESC')
+            ->limit(3)
+            ->all();
+
+        //Displays album video
+        $albumvideo = VAlbumVideo::find()
+            ->where([
+                    'id_instansi' => 'G09018',
+                    'status_album' => 'ON',
+                    'jenis_album' => 'VIDEO',
+                ])
+            ->orderBy('tanggal_album DESC')
+            ->limit(3)
             ->all();
 
         return $this->render('index', [
@@ -140,6 +155,7 @@ class SiteController extends Controller
             'slideractive'          => $slideractive,
             'slideritem'            => $slideritem,
             'albumfoto'             => $albumfoto,
+            'albumvideo'            => $albumvideo,
             $hit_website,
         ]);
     }
@@ -175,38 +191,6 @@ class SiteController extends Controller
         return $this->render('daftar', [
             'daftar_berita_instansi' => $daftar_berita_instansi,
             'pages'                  => $pages,
-        ]);
-    }
-
-    public function actionViewfoto($id)
-    {
-        $afoto = VAlbumFoto::find()
-            ->where([
-                    'id_instansi' => 'G09018',
-                    'slug_album' => $id
-                ])
-            ->one();
-        //script untuk menambahkan jumlah hit_berita -> hit_berita+1
-        $afoto->updateCounters(['hit_album' => 1]);
-
-        return $this->render('viewfoto', ['afoto' => $afoto]);
-    }
-
-
-    public function actionFooter()
-    {
-        $linkterkait = VLinkTerkait::find()
-            ->where([
-                    'instansi_id' => 'G09018',
-                ])
-            ->orderBy('urutan_link ASC')
-            ->all();
-
-        $this->view->params['linkterkait'] = $linkterkait;
-
-        return $this->render('index', [
-            'linkterkait' => $linkterkait
-            /*'berita' => $berita*/
         ]);
     }
 

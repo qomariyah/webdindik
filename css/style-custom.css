@@ -102,6 +102,25 @@ img {
   font-size: 2.5rem;
 }
 
+.img-album{
+  width: 350px;
+  height: 250px;
+}
+
+.btn-next{
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.btn-next:hover{
+  color: #bfbfbf;
+}
+
+.img-album-foto-list{
+  width: 350px;
+  height: 250px;
+}
+
 .bg-text{
   background-color: #4179c0;
 }

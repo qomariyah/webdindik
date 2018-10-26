@@ -15,7 +15,7 @@ use yii\helpers\Url;
                     <div class="top-header-content d-flex align-items-center justify-content-between">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="<?= Url::to(['img/core-img/dindik.png'])?>" width="350" alt=""></a>
+                            <a href="<?= Url::to(['/'])?>"><img src="<?= Url::to(['img/core-img/dindik.png'])?>" width="350" alt=""></a>
                         </div>
 
                         <!-- Login Search Area -->
