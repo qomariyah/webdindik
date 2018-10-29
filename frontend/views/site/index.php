@@ -196,6 +196,38 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
 </div>
 <!-- ##### ALBUM FOTO AREA END ##### -->
 
+<!-- ##### Team Area Start ##### -->
+<section class="newspaper-team mb-30">
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="section-heading">
+            <h6>Pengumuman</h6>
+        </div>
+        <div class="row">
+            <?php foreach($pengumuman as $pengumuman) { ?>
+                <div class="col-12 col-sm-12 col-lg-4">
+                    <div class="single-team-member">
+                        <?php if($pengumuman->gambar_pengumuman != null) { ?>
+                            <?= Html::img('@web/upload/pengumuman/'.$pengumuman->gambar_pengumuman.'', ['class' => 'img-announce'] , ['alt' => ''.$pengumuman->gambar_pengumuman.'']); ?>
+                        <?php } else { ?>
+                            <?= Html::img('@web/upload/No_Image_Available.jpg', ['alt' => 'No Image Available']); ?>
+                        <?php } ?>
+                        <div class="team-info">
+                            <h5><a href="<?= Url::to(['/pengumuman/view', 'id'=>$pengumuman->slug_pengumuman])?>"><?= $pengumuman->judul_pengumuman ?></a></h5>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+        <div class="pull-right">
+            <a href="<?= Url::to(['/pengumuman'])?>" class="btn-next-dark">Lihat Semua <i class="fa fa-angle-right"></i></a>
+        </div>
+    </div>
+</section>
+<!-- ##### Team Area End ##### -->
+
 <!-- ##### TWITTER WIDGET AREA START ##### -->
 <div class="editors-pick-post-area section-padding-80-50">
     <div class="container">

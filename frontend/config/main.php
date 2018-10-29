@@ -46,6 +46,9 @@ return [
                 'berita-instansi' => 'site/daftar',
                 'album-foto' => 'albumfoto/index',
                 'album-video' => 'albumvideo/index',
+                'pengumuman' => 'pengumuman/index',
+                'geografi' => 'halaman/geografi',
+                'sejarah' => 'site/sejarah',
                 [
                     'pattern' => 'berita/<id>',
                     'route'   => 'site/view',
@@ -59,6 +62,16 @@ return [
                 [
                     'pattern' => 'album-video/<id>',
                     'route'   => 'albumvideo/view',
+                    'suffix'  => '.html',
+                ],
+                [
+                    'pattern' => 'pengumuman/<id>',
+                    'route'   => 'pengumuman/view',
+                    'suffix'  => '.html',
+                ],
+                [
+                    'pattern' => 'sejarah/<id>',
+                    'route'   => 'site/sejarah',
                     'suffix'  => '.html',
                 ],
                 // '<controller:\w+>/<id:\d+>' => '<controller>/view',

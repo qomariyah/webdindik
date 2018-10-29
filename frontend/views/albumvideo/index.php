@@ -23,7 +23,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                                     <div class="post-thumb">
                                         <a href="#">
                                             <?php if($dvideo->gambar_album != null) { ?>
-                                                <?= Html::img('@web/upload/album/foto/'.$dvideo->gambar_album.'', ['class' => 'img-album-foto-list'], ['alt' => ''.$dvideo->gambar_album.'']) ?>
+                                                <?= Html::img('@web/upload/album/video/'.$dvideo->gambar_album.'', ['class' => 'img-album-foto-list'], ['alt' => ''.$dvideo->gambar_album.'']) ?>
                                             <?php } else { ?>
                                                 <?= Html::img('@web/upload/No_Image_Available.jpg', ['class' => 'img-album-foto-list'] ,['alt' => 'No Image Available']); ?>
                                             <?php } ?>

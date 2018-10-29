@@ -107,6 +107,11 @@ img {
   height: 250px;
 }
 
+.img-announce{
+  width: 350px;
+  height: 200px;
+}
+
 .btn-next{
   color: #ffffff;
   text-decoration: underline;
@@ -119,6 +124,11 @@ img {
 .img-album-foto-list{
   width: 350px;
   height: 250px;
+}
+
+.btn-next-dark{
+  color: black;
+  text-decoration: underline;
 }
 
 .bg-text{

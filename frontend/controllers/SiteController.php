@@ -14,7 +14,9 @@ use frontend\models\VBeritaKota;
 use frontend\models\VWebsite;
 use frontend\models\VAlbumFoto;
 use frontend\models\VAlbumVideo;
+use frontend\models\VPengumuman;
 use frontend\models\VLinkTerkait;
+use frontend\models\VHalaman;
 use yii\data\Pagination;
 
 /**
@@ -149,6 +151,17 @@ class SiteController extends Controller
             ->limit(3)
             ->all();
 
+        //Displays Announcement(Pengumuman)
+        $pengumuman = VPengumuman::find()
+            ->where([
+                    'instansi_id' => 'G09018',
+                    'utama_instansi_pengumuman' => 'ON',
+                    'status_pengumuman' => 'ON',
+                ])
+            ->orderBy('tanggal_pengumuman DESC')
+            ->limit(3)
+            ->all();
+
         return $this->render('index', [
             'berita_instansi_limit' => $berita_instansi_limit,
             'berita_instansi'       => $berita_instansi,
@@ -156,6 +169,7 @@ class SiteController extends Controller
             'slideritem'            => $slideritem,
             'albumfoto'             => $albumfoto,
             'albumvideo'            => $albumvideo,
+            'pengumuman'            => $pengumuman,
             $hit_website,
         ]);
     }
@@ -191,6 +205,38 @@ class SiteController extends Controller
         return $this->render('daftar', [
             'daftar_berita_instansi' => $daftar_berita_instansi,
             'pages'                  => $pages,
+        ]);
+    }
+
+    public function actionSejarah()
+    {
+        $sejarah = VHalaman::find()
+            ->where([
+                    'instansi_id' => 'G09018',
+                    'status_halaman' => 'ON',
+                    'id_halaman' => '20180411085958',
+                ])
+            ->one();
+        $sejarah->updateCounters(['hit_halaman' => 1]);
+
+        return $this->render('sejarah', [
+            'sejarah' => $sejarah,
+        ]);
+    }
+
+    public function actionGeografi()
+    {
+        $geografi = VHalaman::find()
+            ->where([
+                    'instansi_id' => 'G09018',
+                    'status_halaman' => 'ON',
+                    'id_halaman' => '20180411090143',
+                ])
+            ->one();
+        $geografi->updateCounters(['hit_halaman' => 1]);
+
+        return $this->render('geografi', [
+            'geografi' => $geografi,
         ]);
     }
 

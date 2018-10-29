@@ -65,20 +65,8 @@ use yii\helpers\Url;
                                 <li class="#"><a href="<?= Url::to(['/'])?>">Beranda</a></li>
                                 <li><a href="#">Selayang pandang</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="catagories-post.html">Catagories</a></li>
-                                        <li><a href="single-post.html">Single Articles</a></li>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="#">Dropdown</a>
-                                            <ul class="dropdown">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="catagories-post.html">Catagories</a></li>
-                                                <li><a href="single-post.html">Single Articles</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a href="<?= Url::to(['/berita-instansi'])?>">Geografi</a></li>
+                                        <li><a href="<?= Url::to(['/sejarah'])?>">Sejarah Singkat</a></li>
                                     </ul>
                                 </li>
                                 <!--  -->
