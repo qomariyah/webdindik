@@ -19,9 +19,15 @@ AppAsset::register($this);
 <html lang="<?= Yii::$app->language ?>">
     <head>
         <meta charset="<?= Yii::$app->charset ?>">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="<?= Url::to(['img/core-img/favicon-pkl.ico'])?>">
+
+        <?php foreach(frontend\controllers\SiteController::actionWebsite() as $row) { ?>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="description" content="<?= $row->meta_description ?>">
+            <meta name="keywords" content="<?= $row->meta_keyword ?>">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="icon" href="<?= Url::to(['img/core-img/favicon-pkl.ico'])?>">
+        <?php } ?>
+
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>

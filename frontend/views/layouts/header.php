@@ -1,6 +1,9 @@
 <?php
 
 use yii\helpers\Url;
+use yii\helpers\Html;
+use frontend\models\VSubmenu;
+use frontend\models\VChildmenu;
 
 ?>
 
@@ -13,11 +16,14 @@ use yii\helpers\Url;
             <div class="row">
                 <div class="col-12">
                     <div class="top-header-content d-flex align-items-center justify-content-between">
-                        <!-- Logo -->
-                        <div class="logo">
-                            <a href="<?= Url::to(['/'])?>"><img src="<?= Url::to(['img/core-img/dindik.png'])?>" width="350" alt=""></a>
-                        </div>
-
+                        <?php foreach(frontend\controllers\SiteController::actionWebsite() as $row) { ?>
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href="<?= Url::to(['/'])?>">
+                                    <?= Html::img('@web/upload/logo/'.$row->logo_website.'',  ['alt' => ''.$row->logo_website.''], ['width' => 350]) ?>
+                                </a>
+                            </div>
+                        <?php } ?>
                         <!-- Login Search Area -->
                         <div class="login-search-area d-flex align-items-center">
                         <!-- Search Form -->
@@ -41,10 +47,14 @@ use yii\helpers\Url;
                 <!-- Menu -->
                 <nav class="classy-navbar justify-content-between" id="newspaperNav">
 
-                    <!-- Logo -->
-                    <div class="logo">
-                        <a href="index.html"><img src="img/core-img/dindik.png" alt=""></a>
-                    </div>
+                    <?php foreach(frontend\controllers\SiteController::actionWebsite() as $row) { ?>
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="<?= Url::to(['/'])?>">
+                                <?= Html::img('@web/upload/logo/'.$row->logo_website.'',  ['alt' => ''.$row->logo_website.'']) ?>
+                            </a>
+                        </div>
+                    <?php } ?>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -62,47 +72,57 @@ use yii\helpers\Url;
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li class="#"><a href="<?= Url::to(['/'])?>">Beranda</a></li>
-                                <li><a href="#">Selayang pandang</a>
-                                    <ul class="dropdown">
-                                        <li><a href="<?= Url::to(['/berita-instansi'])?>">Geografi</a></li>
-                                        <li><a href="<?= Url::to(['/sejarah'])?>">Sejarah Singkat</a></li>
-                                    </ul>
-                                </li>
-                                <!--  -->
-                                <li><a href="#">program</a>
-                                    <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="catagories-post.html">Catagories</a></li>
-                                        <li><a href="single-post.html">Single Articles</a></li>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Data sekolah</a>
-                                <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>                   
-                                    </ul>
-                                </li>
+                                <?php foreach (frontend\controllers\SiteController::actionMenu() as $menu) { ?>
 
-                                <li><a href="#">Produk Hukum</a>
-                                    <ul class="dropdown">
-                                        <li><a href="index.html">Mendikbud</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">interaktif</a></li>
-                                <li><a href="#">e-sarpas</a></li>
-                                <li><a href="#">PPDB online 2018</a>
-                                <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="catagories-post.html">Catagories</a></li>
-                                        <li><a href="single-post.html">Single Articles</a></li>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">KIP/PPID</a></li>
-                                <!-- <li><a href="contact.html">Contact</a></li> -->
+                                    <?php if ($menu->link_menu != '#') { ?>
+                                        <li><a href="<?= $menu->link_menu ?>"><?= $menu->nama_menu ?></a></li>
+                                    <?php } else { ?>
+
+                                        <?php
+                                            $idmenu = $menu->id_menu;
+                                            $submenu = VSubmenu::find()
+                                                        ->where([
+                                                                'instansi_id' => 'G09018',
+                                                                'id_menu' => $idmenu
+                                                            ])
+                                                        ->orderBy('urutan_submenu')
+                                                        ->all();
+                                        ?>
+
+                                        <?php if (count($submenu) > 0) { ?>
+                                            <li><a href="<?= $menu->link_menu ?>"><?= $menu->nama_menu ?></a>
+                                                <ul class="dropdown">
+                                                    <?php foreach($submenu as $submenu) { ?>
+                                                        <?php
+                                                            $idsub = $submenu->id_submenu;
+                                                            $childmenu = VChildmenu::find()
+                                                                            ->where([
+                                                                                    'instansi_id' => 'G09018',
+                                                                                    'id_submenu' => $idsub
+                                                                                ])
+                                                                            ->orderBy('urutan_childmenu')
+                                                                            ->all();
+                                                        ?>
+                                                        <?php if (count($childmenu) > 0) { ?>
+                                                            <li>
+                                                                <a href="<?= $submenu->link_submenu ?>"><?= $submenu->nama_submenu ?></a>
+                                                                <ul class="dropdown">
+                                                                    <?php foreach($childmenu as $cm) { ?>
+                                                                        <li><a href="<?= $cm->link_childmenu ?>"><?= $cm->nama_childmenu ?></a></li>
+                                                                    <?php } ?>
+                                                                </ul>
+                                                            </li>
+                                                        <?php } else { ?>
+                                                            <li><a href="<?= $submenu->link_submenu ?>"><?= $submenu->nama_submenu ?></a></li>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </ul>
+                                            </li>
+                                        <?php } else { ?>
+                                            <li><a href="<?= $menu->link_menu ?>"><?= $menu->nama_menu ?></a></li>
+                                        <?php } ?>
+                                    <?php } ?>
+                                <?php } ?>
                             </ul>
                         </div>
                         <!-- Nav End -->

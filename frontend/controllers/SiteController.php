@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
+use frontend\models\VMenu;
+use frontend\models\VSubmenu;
 use frontend\models\VBeritaInstansi;
 use frontend\models\VBeritaKota;
 use frontend\models\VWebsite;
@@ -99,6 +101,15 @@ class SiteController extends Controller
             ->limit(6)
             ->all();
 
+        $berita_kota = VBeritaKota::find()
+            ->where([
+                    'instansi_id' => 'G09018',
+                    'kota_berita' => 'ON'
+                ])
+            ->orderBy('tanggal_berita DESC')
+            ->limit(5)
+            ->all();
+
         //Displays Slider
         $slideractive = VBeritaInstansi::find()
              ->where([
@@ -165,6 +176,7 @@ class SiteController extends Controller
         return $this->render('index', [
             'berita_instansi_limit' => $berita_instansi_limit,
             'berita_instansi'       => $berita_instansi,
+            'berita_kota'           => $berita_kota,
             'slideractive'          => $slideractive,
             'slideritem'            => $slideritem,
             'albumfoto'             => $albumfoto,
@@ -202,9 +214,19 @@ class SiteController extends Controller
             ->limit($pages->limit)
             ->all();
 
+        $populer = VBeritaInstansi::find()
+            ->where([
+                    'instansi_id' => 'G09018',
+                    'instansi_berita' => 'ON'
+                ])
+            ->orderBy('hit_berita DESC')
+            ->limit(8)
+            ->all();
+
         return $this->render('daftar', [
             'daftar_berita_instansi' => $daftar_berita_instansi,
             'pages'                  => $pages,
+            'populer'                => $populer,
         ]);
     }
 
@@ -238,6 +260,47 @@ class SiteController extends Controller
         return $this->render('geografi', [
             'geografi' => $geografi,
         ]);
+    }
+
+    /**
+     * Function that are using in layouts
+     */
+
+    public function actionWebsite(){
+        return $header = VWebsite::find()
+            ->where([
+                    'instansi_id' => 'G09018',
+                ])
+            ->all();
+    }
+
+    public function actionMenu(){
+        return $menu = VMenu::find()
+            ->where([
+                    'instansi_id' => 'G09018',
+                ])
+            ->orderBy('urutan_menu')
+            ->all();
+    }
+
+    public function actionLinkterkait(){
+        return $linkterkait = VLinkTerkait::find()
+            ->where([
+                    'instansi_id' => 'G09018',
+                ])
+            ->orderBy('urutan_link DESC')
+            ->all();
+    }
+
+    public function actionBeritapopuler(){
+        return $beritapopuler = VBeritaInstansi::find()
+            ->where([
+                    'instansi_id' => 'G09018',
+                    'instansi_berita' => 'ON',
+                ])
+            ->orderBy('hit_berita DESC')
+            ->limit(7)
+            ->all();
     }
 
 }

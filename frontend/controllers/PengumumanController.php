@@ -25,9 +25,19 @@ class PengumumanController extends \yii\web\Controller
             ->limit($pages->limit)
             ->all();
 
+        $populer = VPengumuman::find()
+            ->where([
+                    'instansi_id' => 'G09018',
+                    'status_pengumuman' => 'ON',
+                ])
+            ->orderBy('hit_pengumuman DESC')
+            ->limit(8)
+            ->all();
+
         return $this->render('index', [
             'daftarpengumuman' => $daftarpengumuman,
             'pages' => $pages,
+            'populer' => $populer,
         ]);
     }
 

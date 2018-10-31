@@ -1,6 +1,8 @@
 <?php 
 use yii\helpers\Url;
 ?>
+
+
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
 
@@ -8,93 +10,66 @@ use yii\helpers\Url;
         <div class="main-footer-area">
             <div class="container">
                 <div class="row">
+                    <?php foreach(frontend\controllers\SiteController::actionWebsite() as $row) { ?>
+                        <!-- Footer Widget Area -->
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="footer-widget-area mt-80">
+                                <!-- Footer Logo -->
+                                <div class="footer-logo">
+                                    <a href="index.html"><img src="<?= Url::to(['img/pkl.png'])?>" alt=""></a>
+                                </div>
+                                <!-- List -->
+                                <ul class="list">
+                                    <li><a href="<?= $row->alamat_website ?>"><?= $row->nama_website ?></a></li>
+                                    <li><a href="https://goo.gl/maps/yZANiTiQP8L2" target="_blank"><?= $row->kantor_website ?></a></li>
+                                    <li><p>Telp/Fax : <?= $row->kontak_website ?></p></li>
+                                    <li><p><?= $row->email_website ?></p></li>
+                                </ul>
 
-                    <!-- Footer Widget Area -->
-                    <div class="col-12 col-sm-6 col-lg-4">
-                        <div class="footer-widget-area mt-80">
-                            <!-- Footer Logo -->
-                            <div class="footer-logo">
-                                <a href="index.html"><img src="<?= Url::to(['img/pkl.png'])?>" alt=""></a>
+                                <ul class="social-network social-circle">
+                                    <li><a href="<?= $row->facebook_website ?>" target="_blank" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="<?= $row->twitter_website ?>" target="_blank" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="<?= $row->instagram_website ?>" target="_blank" class="icoGoogle" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="<?= $row->youtube_website ?>" target="_blank" class="icoLinkedin" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+                                </ul>
+                                
                             </div>
-                            <!-- List -->
-                            <ul class="list">
-                                <li><a href="#"><?= Yii::$app->name; ?></a></li>
-                                <li><a href="https://goo.gl/maps/yZANiTiQP8L2" target="_blank">Jl. Maninjau No. 16 Kota Pekalongan</a></li>
-                                <li><p>Telp/Fax : (0285) 421878</p></li>
-                                <!-- <li><a href="">www.yoursitename.com</a></li> -->
-                            </ul>
                         </div>
-                    </div>
+                    <?php } ?>
 
                     <!-- Footer Widget Area -->
                     <div class="col-12 col-sm-6 col-lg-2">
                         <div class="footer-widget-area mt-80">
                             <!-- Title -->
-                            <h4 class="widget-title">LINK TERKAIT</h4>
+                            <h4 class="widget-title">Link Terkait</h4>
                             <!-- List -->
                             <ul class="list">
-                                    <li><a href="#">Pemprov Jateng</a></li>
+                                <?php foreach(frontend\controllers\SiteController::actionLinkTerkait() as $link) { ?>
+                                    <li><a href="<?= $link->url_link ?>" target="_blank"><?= $link->text_link ?></a></li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
 
                     <!-- Footer Widget Area -->
-                    <div class="col-12 col-sm-4 col-lg-2">
+                    <div class="col-12 col-sm-4 col-lg-6">
                         <div class="footer-widget-area mt-80">
                             <!-- Title -->
-                            <h4 class="widget-title">Featured</h4>
+                            <h4 class="widget-title">Berita Populer</h4>
                             <!-- List -->
                             <ul class="list">
-                                <li><a href="#">Football</a></li>
-                                <li><a href="#">Golf</a></li>
-                                <li><a href="#">Tennis</a></li>
-                                <li><a href="#">Motorsport</a></li>
-                                <li><a href="#">Horseracing</a></li>
-                                <li><a href="#">Equestrian</a></li>
-                                <li><a href="#">Sailing</a></li>
-                                <li><a href="#">Skiing</a></li>
+                                <?php foreach(frontend\controllers\SiteController::actionBeritapopuler() as $bp) { ?>
+                                    <li><a href="<?= Url::to(['/site/view', 'id'=>$bp->slug_berita])?>"><?= $bp->judul_berita ?></a></li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- Footer Widget Area -->
-                    <div class="col-12 col-sm-4 col-lg-2">
-                        <div class="footer-widget-area mt-80">
-                            <!-- Title -->
-                            <h4 class="widget-title">FAQ</h4>
-                            <!-- List -->
-                            <ul class="list">
-                                <li><a href="#">Aviation</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Traveller</a></li>
-                                <li><a href="#">Destinations</a></li>
-                                <li><a href="#">Features</a></li>
-                                <li><a href="#">Food/Drink</a></li>
-                                <li><a href="#">Hotels</a></li>
-                                <li><a href="#">Partner Hotels</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Footer Widget Area -->
-                    <div class="col-12 col-sm-4 col-lg-2">
-                        <div class="footer-widget-area mt-80">
-                            <!-- Title -->
-                            <h4 class="widget-title">+More</h4>
-                            <!-- List -->
-                            <ul class="list">
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Design</a></li>
-                                <li><a href="#">Architecture</a></li>
-                                <li><a href="#">Arts</a></li>
-                                <li><a href="#">Autos</a></li>
-                                <li><a href="#">Luxury</a></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
+
+        <br>
 
         <!-- Bottom Footer Area -->
         <div class="bottom-footer-area">

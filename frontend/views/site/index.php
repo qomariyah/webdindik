@@ -83,7 +83,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
             <div class="row">
                 <div class="col-12 col-lg-8">
                     <div class="section-heading">
-                        <h6>Berita Instansi</h6>
+                        <h6>Berita Utama</h6>
                     </div>
 
                     <div class="row">
@@ -113,7 +113,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
 
                     <div class="pager d-flex align-items-center justify-content-between">
                         <div class="next">
-                            <a href="<?= Url::to(['/berita-instansi'])?>" class="active">Lihat Semua <i class="fa fa-angle-right"></i></a>
+                            <a href="<?= Url::to(['/berita-utama'])?>" class="active">Lihat Semua <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -126,13 +126,18 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                     <?php foreach($berita_instansi as $row) { ?>
                         <div class="single-blog-post small-featured-post d-flex">
                             <div class="post-thumb">
-                                <a href="#"><img src="img/bg-img/19.jpg" class="img-content-kota" alt=""></a>
+                                <a href="#">
+                                    <?php if($row->gambar_berita != null) { ?>
+                                        <?= Html::img('@web/upload/berita/'.$row->gambar_berita.'', ['class' => 'img-content-kota'] , ['alt' => ''.$row->gambar_berita.'']) ?>
+                                    <?php } else { ?>
+                                        <?= Html::img('@web/upload/No_Image_Available.jpg', ['class' => 'img-content-kota'] , ['alt' => 'No Image Available']); ?>
+                                    <?php } ?>
+                                </a>
                             </div>
                             <div class="post-data">
                                 <a href="#" class="post-catagory"><?= $row->judul_berita ?></a>
-                                <div class="post-meta">
-                                    <p class="post-date">Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</p><br>  
-                                    <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
+                                <div class="post-meta"> 
+                                    <p class="post-date"><span><?= $row->nama_user ?></span> | <span><?= date('d F Y', strtotime($row->tanggal_berita)) ?></span></p>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +170,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
             <?php } ?>
         </div>
         <div class="pull-right">
-            <a href="<?= Url::to(['/album-foto'])?>" class="btn-next">Lihat Semua <i class="fa fa-angle-right"></i></a>
+            <a href="<?= Url::to(['/albumfoto/index'])?>" class="btn-next">Lihat Semua <i class="fa fa-angle-right"></i></a>
         </div>        
     </div>
     <br>
@@ -190,13 +195,13 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
             <?php } ?>
         </div>
         <div class="pull-right">
-            <a href="<?= Url::to(['/album-video'])?>" class="btn-next">Lihat Semua <i class="fa fa-angle-right"></i></a>
+            <a href="<?= Url::to(['/albumvideo/index'])?>" class="btn-next">Lihat Semua <i class="fa fa-angle-right"></i></a>
         </div>
     </div>
 </div>
 <!-- ##### ALBUM FOTO AREA END ##### -->
 
-<!-- ##### Team Area Start ##### -->
+<!-- ##### PENGUMUMAN Area Start ##### -->
 <section class="newspaper-team mb-30">
     <br>
     <br>
@@ -222,11 +227,11 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
             <?php } ?>
         </div>
         <div class="pull-right">
-            <a href="<?= Url::to(['/pengumuman'])?>" class="btn-next-dark">Lihat Semua <i class="fa fa-angle-right"></i></a>
+            <a href="<?= Url::to(['/pengumuman/index'])?>" class="btn-next-dark">Lihat Semua <i class="fa fa-angle-right"></i></a>
         </div>
     </div>
 </section>
-<!-- ##### Team Area End ##### -->
+<!-- ##### PENGUMUMAN Area End ##### -->
 
 <!-- ##### TWITTER WIDGET AREA START ##### -->
 <div class="editors-pick-post-area section-padding-80-50">
@@ -260,60 +265,3 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
 </div>
 <!-- ##### TWITTER WIDGET AREA END ##### -->
 
-<!-- ##### Team Area Start ##### -->
-<section class="newspaper-team mb-30">
-    <br>
-    <br>
-    <br>
-    <div class="container">
-        <div class="section-heading">
-            <h6>Pengumuman</h6>
-        </div>
-        <div class="row">
-
-            <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-team-member">
-                            <img src="img/bg-img/t1.jpg" alt="">
-                            <div class="team-info">
-                                <h5>James Williams</h5>
-                                <h6>Senior Editor</h6>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Team Member -->
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-team-member">
-                            <img src="img/bg-img/t2.jpg" alt="">
-                            <div class="team-info">
-                                <h5>Christinne Smith</h5>
-                                <h6>Senior Editor</h6>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Team Member -->
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-team-member">
-                            <img src="img/bg-img/t3.jpg" alt="">
-                            <div class="team-info">
-                                <h5>Alicia Dormund</h5>
-                                <h6>Senior Editor</h6>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Team Member -->
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-team-member">
-                            <img src="img/bg-img/t4.jpg" alt="">
-                            <div class="team-info">
-                                <h5>Steve Duncan</h5>
-                                <h6>Senior Editor</h6>
-                            </div>
-                        </div>
-                    </div>
-        </div>
-    </div>
-</section>
-<!-- ##### Team Area End ##### -->

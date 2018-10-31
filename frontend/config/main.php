@@ -43,12 +43,30 @@ return [
             'rules' => [
                 '/' => 'site/index',
                 'login' => 'site/login',
-                'berita-instansi' => 'site/daftar',
-                'album-foto' => 'albumfoto/index',
-                'album-video' => 'albumvideo/index',
-                'pengumuman' => 'pengumuman/index',
+                'berita-utama' => 'site/daftar',
                 'geografi' => 'halaman/geografi',
                 'sejarah' => 'site/sejarah',
+                [
+                    'pattern' => 'index',
+                    'route'   => 'site/index',
+                    'suffix'  => '.html',
+                ],
+                [
+                    'pattern' => 'album-foto/index',
+                    'route'   => 'albumfoto/index',
+                    'suffix'  => '.html',
+                ],
+                [
+                    'pattern' => 'album-video/index',
+                    'route'   => 'albumvideo/index',
+                    'suffix'  => '.html',
+                ],
+                [
+                    'pattern' => 'pengumuman/index',
+                    'route'   => 'pengumuman/index',
+                    'suffix'  => '.html',
+                ],
+
                 [
                     'pattern' => 'berita/<id>',
                     'route'   => 'site/view',

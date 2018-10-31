@@ -14,20 +14,21 @@ $this->title = $pengumuman->judul_pengumuman
 <div class="blog-area section-padding-0-80">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-8">
+            <div class="col-12 col-lg-12">
                 <div class="blog-posts-area">
 
                     <!-- Single Featured Post -->
                     <div class="single-blog-post featured-post single-post">
                         <div class="post-thumb">
-                            <a href="#">
-                                <?php if($pengumuman->gambar_pengumuman != null) { ?>
-                                    <?= Html::img('@web/upload/pengumuman/'.$pengumuman->gambar_pengumuman.'', ['alt' => ''.$pengumuman->gambar_pengumuman.'']); ?>
-                                <?php } else { ?>
-                                    <?= Html::img('@web/upload/No_Image_Available.jpg'); ?>
-                                <?php } ?>
-                            </a>
-
+                            <center>
+                                <a href="#">
+                                    <?php if($pengumuman->gambar_pengumuman != null) { ?>
+                                        <?= Html::img('@web/upload/pengumuman/'.$pengumuman->gambar_pengumuman.'', ['alt' => ''.$pengumuman->gambar_pengumuman.'']); ?>
+                                    <?php } else { ?>
+                                        <?= Html::img('@web/upload/No_Image_Available.jpg'); ?>
+                                    <?php } ?>
+                                </a>
+                            </center>
                         </div>
                         <div class="post-data">
                             <a href="#" class="post-title">
@@ -54,45 +55,10 @@ $this->title = $pengumuman->judul_pengumuman
                             </div>
                         </div>
                     </div>
-
-                    <!-- About Author -->
-                    <div class="blog-post-author d-flex">
-                        <div class="author-thumbnail">
-                            <img src="<?= Url::to(['img/bg-img/32.jpg'])?>" alt="">
-                        </div>
-                        <div class="author-info">
-                            <a href="#" class="author-name">James Smith, <span>The Author</span></a>
-                            <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
-                        </div>
-                    </div>
+                    <hr>
                 </div>
             </div>
-
-            <div class="col-12 col-lg-4">
-                <div class="blog-sidebar-area">
-
-                    <!-- Latest Posts Widget -->
-                    <div class="latest-posts-widget mb-50">
-                        <?php for ($i = 0; $i < 10; $i++) { ?>
-                            <!-- Single Featured Post -->
-                            <div class="single-blog-post small-featured-post d-flex">
-                                <div class="post-thumb">
-                                    <a href="#"><img src="<?= Url::to(['img/bg-img/19.jpg'])?>" alt=""></a>
-                                </div>
-                                <div class="post-data">
-                                    <a href="#" class="post-catagory">Finance</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-title">
-                                            <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                        </a>
-                                        <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
+            <hr>
         </div>
     </div>
 </div>

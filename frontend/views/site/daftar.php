@@ -70,105 +70,30 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
 
                 <div class="col-12 col-lg-4">
                     <div class="blog-sidebar-area">
-
+                        <div class="section-heading">
+                            <h6>Berita Populer</h6>
+                        </div>
                         <!-- Latest Posts Widget -->
                         <div class="latest-posts-widget mb-50">
-
-                            <!-- Single Featured Post -->
-                            <div class="single-blog-post small-featured-post d-flex">
-                                <div class="post-thumb">
-                                    <a href="#"><img src="img/bg-img/19.jpg" alt=""></a>
-                                </div>
-                                <div class="post-data">
-                                    <a href="#" class="post-catagory">Finance</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-title">
-                                            <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
+                            <?php foreach($populer as $populer) { ?>
+                                <div class="single-blog-post small-featured-post d-flex">
+                                    <div class="post-thumb">
+                                        <a href="#">
+                                            <?php if($populer->gambar_berita != null) { ?>
+                                                <?= Html::img('@web/upload/berita/'.$populer->gambar_berita.'', ['class' => 'img-content-kota'] , ['alt' => ''.$populer->gambar_berita.'']) ?>
+                                            <?php } else { ?>
+                                                <?= Html::img('@web/upload/No_Image_Available.jpg', ['class' => 'img-content-kota'] , ['alt' => 'No Image Available']); ?>
+                                            <?php } ?>
                                         </a>
-                                        <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
+                                    </div>
+                                    <div class="post-data">
+                                        <a href="#" class="post-catagory"><?= $populer->judul_berita ?></a>
+                                        <div class="post-meta"> 
+                                            <p class="post-date"><span><?= $populer->nama_user ?></span> | <span><?= date('d F Y', strtotime($populer->tanggal_berita)) ?></span></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- Single Featured Post -->
-                            <div class="single-blog-post small-featured-post d-flex">
-                                <div class="post-thumb">
-                                    <a href="#"><img src="img/bg-img/20.jpg" alt=""></a>
-                                </div>
-                                <div class="post-data">
-                                    <a href="#" class="post-catagory">Politics</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-title">
-                                            <h6>Sed a elit euismod augue semper congue sit amet ac sapien.</h6>
-                                        </a>
-                                        <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Featured Post -->
-                            <div class="single-blog-post small-featured-post d-flex">
-                                <div class="post-thumb">
-                                    <a href="#"><img src="img/bg-img/21.jpg" alt=""></a>
-                                </div>
-                                <div class="post-data">
-                                    <a href="#" class="post-catagory">Health</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-title">
-                                            <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                        </a>
-                                        <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Featured Post -->
-                            <div class="single-blog-post small-featured-post d-flex">
-                                <div class="post-thumb">
-                                    <a href="#"><img src="img/bg-img/22.jpg" alt=""></a>
-                                </div>
-                                <div class="post-data">
-                                    <a href="#" class="post-catagory">Finance</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-title">
-                                            <h6>Augue semper congue sit amet ac sapien. Fusce consequat.</h6>
-                                        </a>
-                                        <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Featured Post -->
-                            <div class="single-blog-post small-featured-post d-flex">
-                                <div class="post-thumb">
-                                    <a href="#"><img src="img/bg-img/23.jpg" alt=""></a>
-                                </div>
-                                <div class="post-data">
-                                    <a href="#" class="post-catagory">Travel</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-title">
-                                            <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
-                                        </a>
-                                        <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Featured Post -->
-                            <div class="single-blog-post small-featured-post d-flex">
-                                <div class="post-thumb">
-                                    <a href="#"><img src="img/bg-img/24.jpg" alt=""></a>
-                                </div>
-                                <div class="post-data">
-                                    <a href="#" class="post-catagory">Politics</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-title">
-                                            <h6>Augue semper congue sit amet ac sapien. Fusce consequat.</h6>
-                                        </a>
-                                        <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

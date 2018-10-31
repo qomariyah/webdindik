@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use frontend\models\VGalleryFoto;
 
 $this->title = $afoto->nama_album
 
@@ -52,14 +53,25 @@ $this->title = $afoto->nama_album
 <section class="newspaper-team mb-30">
     <div class="container">
         <div class="row">
-            <?php for ($i=1; $i<7; $i++) { ?>
+            <?php
+                $id_album = $afoto->id_album;
+                $galeri = VGalleryFoto::find()
+                        ->where([
+                                'instansi_id' => 'G09018',
+                                'id_album' => $id_album
+                            ])
+                        ->orderBy('tanggal_gallery DESC')
+                        ->all();
+
+                foreach ($galeri as $galeri) { 
+            ?>
                 <!-- Single Team Member -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-team-member">
                         <img src="<?= Url::to(['img/bg-img/bg1.jpg'])?>" alt="" class="img-album">
                         <div class="team-info">
-                            <h5>James Williams</h5>
-                            <h6>Senior Editor</h6>
+                            <h5><?= $galeri->nama_gallery ?></h5>
+                            <h6><?= $galeri->keterangan_gallery ?></h6>
                         </div>
                     </div>
                 </div>

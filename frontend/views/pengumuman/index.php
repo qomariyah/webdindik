@@ -68,6 +68,36 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                     </nav>
                 </div>
 
+                <div class="col-12 col-lg-4">
+                    <div class="blog-sidebar-area">
+                        <div class="section-heading">
+                            <h6>Pengumuman Populer</h6>
+                        </div>
+                        <!-- Latest Posts Widget -->
+                        <div class="latest-posts-widget mb-50">
+                            <?php foreach($populer as $populer) { ?>
+                                <div class="single-blog-post small-featured-post d-flex">
+                                    <div class="post-thumb">
+                                        <a href="#">
+                                            <?php if($populer->gambar_pengumuman != null) { ?>
+                                                <?= Html::img('@web/upload/pengumuman/'.$populer->gambar_pengumuman.'', ['class' => 'img-content-kota'] , ['alt' => ''.$populer->gambar_pengumuman.'']) ?>
+                                            <?php } else { ?>
+                                                <?= Html::img('@web/upload/No_Image_Available.jpg', ['class' => 'img-content-kota'] , ['alt' => 'No Image Available']); ?>
+                                            <?php } ?>
+                                        </a>
+                                    </div>
+                                    <div class="post-data">
+                                        <a href="#" class="post-catagory"><?= $populer->judul_pengumuman ?></a>
+                                        <div class="post-meta"> 
+                                            <p class="post-date"><span><?= $populer->nama_user ?></span> | <span><?= date('d F Y', strtotime($populer->tanggal_pengumuman)) ?></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- <div class="col-12 col-lg-4">
                     <div class="blog-sidebar-area">
                 

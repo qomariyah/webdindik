@@ -30,7 +30,7 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                                         </a>
                                     </div>
                                     <div class="post-data">
-                                        <a href="#" class="post-title">
+                                        <a href="<?= Url::to(['/albumfoto/view', 'id'=>$dfoto->slug_album])?>" class="post-title">
                                             <center>
                                                 <?= $dfoto->nama_album ?><br>
                                                 <?= date('d F Y', strtotime($dfoto->tanggal_album)) ?>
