@@ -65,9 +65,9 @@ class VGalleryFoto extends \yii\db\ActiveRecord
         return 'v_gallery_foto';
     }
 
-    public static function PrimaryKey()
+    public static function primaryKey()
     {
-        ['id_gallery'];
+        return ['id_gallery'];
     }
 
     /**
@@ -144,4 +144,5 @@ class VGalleryFoto extends \yii\db\ActiveRecord
             'timestamp_user' => 'Timestamp User',
         ];
     }
+
 }

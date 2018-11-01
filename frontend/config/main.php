@@ -88,6 +88,11 @@ return [
                     'suffix'  => '.html',
                 ],
                 [
+                    'pattern' => 'galeri/<id>',
+                    'route'   => 'albumfoto/viewfoto',
+                    'suffix'  => '.html',
+                ],
+                [
                     'pattern' => 'sejarah/<id>',
                     'route'   => 'site/sejarah',
                     'suffix'  => '.html',

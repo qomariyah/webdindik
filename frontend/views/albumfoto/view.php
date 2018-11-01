@@ -62,20 +62,34 @@ $this->title = $afoto->nama_album
                             ])
                         ->orderBy('tanggal_gallery DESC')
                         ->all();
+            
+                if (count($galeri) > 0) { ?>
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <?php foreach($galeri as $galeri) { ?>
+                            <div class="single-team-member single-video-post">
 
-                foreach ($galeri as $galeri) { 
-            ?>
-                <!-- Single Team Member -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-team-member">
-                        <img src="<?= Url::to(['img/bg-img/bg1.jpg'])?>" alt="" class="img-album">
-                        <div class="team-info">
-                            <h5><?= $galeri->nama_gallery ?></h5>
-                            <h6><?= $galeri->keterangan_gallery ?></h6>
-                        </div>
+                                 
+
+                                <a href="<?= Url::to(['/albumfoto/viewfoto', 'id'=>$galeri->slug_gallery])?>">
+                                    <?php if($galeri->gambar_gallery != null) { ?>
+                                        <?= Html::img('@web/upload/gallery/foto/'.$galeri->gambar_gallery.'', ['class' => 'img-album img-responsive'], ['alt' => ''.$galeri->gambar_gallery.'']) ?>
+                                    <?php } else { ?>
+                                        <?= Html::img('@web/upload/No_Image_Available.jpg', ['class' => 'img-album img-responsive'] ,['alt' => 'No Image Available']); ?>
+                                    <?php } ?>
+                                </a>
+                                <div class="team-info">
+                                    <a href="<?= Url::to(['/albumfoto/viewfoto', 'id'=>$galeri->slug_gallery])?>"><h5><?= $galeri->nama_gallery ?></h5></a>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
-                </div>
-            <?php } ?>
+                <?php } else { ?>
+                    <div class="post-a-comment-area section-padding-80-0 col-md-6 col-md-offset-3">
+                        <h4 style="color: #02031c">Maaf, tidak ada galeri foto di dalam album ini.</h4>
+                    </div>
+                <?php } ?>
+                
         </div>
     </div>
 </section>

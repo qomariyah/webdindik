@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+use frontend\models\VGalleryFoto;
 
 /**
  * This is the model class for table "v_album_foto".

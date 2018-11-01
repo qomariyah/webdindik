@@ -43,4 +43,7 @@ AppAsset::register($this);
     <?php $this->endBody() ?>
     </body>
 </html>
+<script>
+    baguetteBox.run('.cards-gallery', { animation: 'slideIn'});
+</script>
 <?php $this->endPage() ?>

@@ -226,9 +226,13 @@ $this->title = 'Dinas Pendidikan Kota Pekalongan';
                 </div>
             <?php } ?>
         </div>
-        <div class="pull-right">
-            <a href="<?= Url::to(['/pengumuman/index'])?>" class="btn-next-dark">Lihat Semua <i class="fa fa-angle-right"></i></a>
-        </div>
+        
+        <?php if (count($pengumuman) >= 3) { ?>
+            <div class="pull-right">
+                <a href="<?= Url::to(['/pengumuman/index'])?>" class="btn-next-dark">Lihat Semua <i class="fa fa-angle-right"></i></a>
+            </div>
+        <?php } ?>
+        
     </div>
 </section>
 <!-- ##### PENGUMUMAN Area End ##### -->
