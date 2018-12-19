@@ -8,6 +8,7 @@ use Yii;
 use yii\web\Controller;
 use yii\data\Pagination;
 use frontend\models\VAlbumVideo;
+use frontend\models\VGalleryVideo;
 
 class AlbumvideoController extends \yii\web\Controller
 {
@@ -45,6 +46,18 @@ class AlbumvideoController extends \yii\web\Controller
         $avideo->updateCounters(['hit_album' => 1]);
 
         return $this->render('view', ['avideo' => $avideo]);
+    }
+
+    public function actionViewvideo($id){
+        $galeri = VGalleryVideo::find()
+            ->where([
+                    'id_instansi' => 'G09018',
+                    'slug_gallery' => $id,
+                ])
+            ->one();
+        $galeri->updateCounters(['hit_gallery' => 1]);
+
+        return $this->render('viewvideo', ['galeri' => $galeri]);
     }
 
 }

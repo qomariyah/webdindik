@@ -12,6 +12,7 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/ckin.css',
         'css/style-custom.css',
         'css/bootstrap.min.css',
         'css/animate.css',
@@ -24,11 +25,13 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'js/ckin.js',
         'js/jquery/jquery-2.2.4.min.js',
         'js/bootstrap/popper.min.js',
         'js/bootstrap/bootstrap.min.js',
         'js/plugins/plugins.js',
         'js/active.js',
+        
     ];
     public $depends = [
         'yii\web\YiiAsset',

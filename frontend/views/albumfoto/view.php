@@ -58,7 +58,8 @@ $this->title = $afoto->nama_album
                 $galeri = VGalleryFoto::find()
                         ->where([
                                 'instansi_id' => 'G09018',
-                                'id_album' => $id_album
+                                'id_album' => $id_album,
+                                'status_gallery' => 'ON',
                             ])
                         ->orderBy('tanggal_gallery DESC')
                         ->all();
@@ -68,9 +69,6 @@ $this->title = $afoto->nama_album
                     <div class="col-12 col-sm-6 col-lg-4">
                         <?php foreach($galeri as $galeri) { ?>
                             <div class="single-team-member single-video-post">
-
-                                 
-
                                 <a href="<?= Url::to(['/albumfoto/viewfoto', 'id'=>$galeri->slug_gallery])?>">
                                     <?php if($galeri->gambar_gallery != null) { ?>
                                         <?= Html::img('@web/upload/gallery/foto/'.$galeri->gambar_gallery.'', ['class' => 'img-album img-responsive'], ['alt' => ''.$galeri->gambar_gallery.'']) ?>

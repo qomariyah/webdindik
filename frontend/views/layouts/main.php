@@ -25,8 +25,15 @@ AppAsset::register($this);
             <meta name="description" content="<?= $row->meta_description ?>">
             <meta name="keywords" content="<?= $row->meta_keyword ?>">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="icon" href="<?= Url::to(['img/core-img/favicon-pkl.ico'])?>">
         <?php } ?>
+        <?php
+            $this->registerMetaTag(Yii::$app->params['og_title'], 'og_title');
+            $this->registerMetaTag(Yii::$app->params['og_description'], 'og_description');
+            $this->registerMetaTag(Yii::$app->params['og_image'], 'og_image');
+            $this->registerMetaTag(Yii::$app->params['og_imgtype'], 'og_imgtype');
+        ?>
+
+        <link rel="icon" href="<?= Url::to(['img/core-img/favicon-pkl.ico'])?>">
 
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>

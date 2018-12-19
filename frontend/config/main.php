@@ -88,8 +88,13 @@ return [
                     'suffix'  => '.html',
                 ],
                 [
-                    'pattern' => 'galeri/<id>',
+                    'pattern' => 'galeri-foto/<id>',
                     'route'   => 'albumfoto/viewfoto',
+                    'suffix'  => '.html',
+                ],
+                [
+                    'pattern' => 'galeri-video/<id>',
+                    'route'   => 'albumvideo/viewvideo',
                     'suffix'  => '.html',
                 ],
                 [
